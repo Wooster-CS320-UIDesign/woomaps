@@ -5,6 +5,7 @@ from tkinter import font as tkFont
 
 class Setting():
     def __init__(self, tools):
+        self.tools = tools
         # open setting window
         self.setting_page = tk.Toplevel(tools.root)
         self.setting_page.title('Setting')
@@ -25,20 +26,24 @@ class Setting():
                                   textvariable=tools.setting_text,
                                   bg=tools._from_rgb((255, 235, 205)),
                                   font=tools.helv(36))
-        self.language = tk.Button(self.setting_page,
-                                  textvariable=tools.language_text,
-                                  bg=tools._from_rgb((250, 240, 230)),
-                                  font=tools.helv(24), width=9,
-                                  command=lambda: [
-                                      self.forget_main(tools),
-                                      self.language_name.pack(
-                                          side='top', pady=60),
-                                      self.chinese.pack(side='top', pady=0),
-                                      self.english.pack(side='top', pady=20),
-                                      self.sound_no_play_button.pack_forget(),
-                                      self.back.pack(side='bottom', pady=20),
-                                      self.language_update(
-                                          tools, tools.language_state)])
+        
+        self.language_name = tk.Label(self.setting_page,
+                                      textvariable=tools.language_text,
+                                      bg=tools._from_rgb((255, 235, 205)),
+                                      font=tools.helv(16))
+        self.options = ['English', '中文']
+        self.clicked = tk.StringVar(self.setting_page)
+        self.clicked.set(self.options[tools.language_state])
+        self.language = tk.OptionMenu(self.setting_page, self.clicked, *self.options)
+        self.language.config(bg=tools._from_rgb((250, 240, 230)),
+                                fg='black', font=tools.helv(24),
+                                width=8, height=1)
+#        menu = self.nametowidget(chooseTest.menuname)
+#        menu.config(font=helv35)
+        drop_down = self.language(self.options)
+        drop_down.config(bg=tools._from_rgb((250, 240, 230)),
+                                fg='black', font=tools.helv(24)
+                         )
         
         self.about = tk.Button(self.setting_page,
                                textvariable=tools.about_text,
@@ -74,29 +79,10 @@ class Setting():
 
         # place buttons and label
         self.menu_name.pack(side='top', pady=50)
+        self.language_name.pack(side='top')
         self.language.pack(side='top', pady=0)
         self.about.pack(side='top', pady=20)
         self.sound_button(tools)
-
-        # changing language
-        self.language_name = tk.Label(self.setting_page,
-                                      textvariable=tools.language_text,
-                                      bg=tools._from_rgb((255, 235, 205)),
-                                      font=tools.helv(36))
-        self.chinese = tk.Button(self.setting_page, text='中文',
-                                 bg=tools._from_rgb((250, 240, 230)),
-                                 font=tools.helv(24), width=9,
-                                 command=lambda: [tools.press_button_sound(),
-                                                  tools.language_update(1),
-                                                  self.language_update(
-                                                      tools, 1)])
-        self.english = tk.Button(self.setting_page, text='English',
-                                 bg=tools._from_rgb((250, 240, 230)),
-                                 font=tools.helv(24), width=9,
-                                 command=lambda: [tools.press_button_sound(),
-                                                  tools.language_update(0),
-                                                  self.language_update(
-                                                      tools, 0)])
 
         # about us
         self.about_name = tk.Label(self.setting_page,
@@ -140,8 +126,6 @@ class Setting():
         self.sound_play_button.pack_forget()
         self.sound_no_play_button.pack_forget()
         self.language_name.pack_forget()
-        self.chinese.pack_forget()
-        self.english.pack_forget()
         self.about_name.pack_forget()
         self.product_team.pack_forget()
         self.product_picture.pack_forget()
@@ -155,12 +139,16 @@ class Setting():
         self.sound_play_button.pack_forget()
         self.sound_no_play_button.pack_forget()
 
-    def language_update(self, tools, x):
-        self.english['state'] = 'normal'
-        self.chinese['state'] = 'normal'
-        if x == 0:
-            tools.language_state = 0
-            self.english['state'] = 'disable'
-        elif x == 1:
-            tools.language_state = 1
-            self.chinese['state'] = 'disable'
+    def my_show(self, *args):
+        if self.clicked.get() == 'English':
+            self.tools.language_state = 0
+            self.tools.press_button_sound()
+            self.tools.language_update(0)
+            self.tools.language_state = 0
+            self.clicked.set(self.options[0])
+        if self.clicked.get() == '中文':
+            self.tools.language_state = 1
+            self.tools.press_button_sound()
+            self.tools.language_update(1)
+            self.clicked.set(self.options[1])
+            self.tools.language_state = 1

@@ -5,7 +5,6 @@ from din_aca_lib import *
 
 
 class Navigation():
-        # navigation route
     def __init__(self, tools, main):
         self.back = tk.Button(main.left_frame, textvariable=tools.back_text,
                               font=tools.helv(12),
@@ -15,19 +14,8 @@ class Navigation():
                                   main.default_page(tools),
                                   tools.press_button_sound(),
                                   self.departure_label.pack_forget(),
-#                                  self.lowry_depa.pack_forget(),
-#                                  self.andrews_depa.pack_forget(),
-#                                  self.kauke_depa.pack_forget(),
-#                                  self.taylor_depa.pack_forget(),
                                   self.destination_label.pack_forget(),
-#                                  self.lowry_dest.pack_forget(),
-#                                  self.andrews_dest.pack_forget(),
-#                                  self.kauke_dest.pack_forget(),
-#                                  self.taylor_dest.pack_forget(),
-                                  self.op_depa.pack_forget(),
                                   self.op_dest.pack_forget(),
-#                                  self.depa(0),
-#                                  self.dest(0),
                                   self.llroute.pack_forget(),
                                   self.laroute.pack_forget(),
                                   self.lkroute.pack_forget(),
@@ -44,8 +32,6 @@ class Navigation():
                                   self.taroute.pack_forget(),
                                   self.tkroute.pack_forget(),
                                   self.ttroute.pack_forget(),
-#                                  self.change_depa_color(tools, 100),
-#                                  self.change_dest_color(tools, 100),
                                   self.search.pack_forget(),
                                   self.back.pack_forget(),
                                   self.guide_label.pack_forget()])
@@ -135,7 +121,8 @@ class Navigation():
                                 bg=tools._from_rgb((255, 235, 205)),
                                 fg='red', font=tools.helv(12),
                                 width=30, height=10)
-        # departure
+        
+        # departure + destination
         option_depa = ['Lowry', 'Andrews', 'Kauke', 'Taylor']
         option_dest = ['Lowry', 'Andrews', 'Kauke', 'Taylor']
         self.clicked = tk.StringVar(main.left_display_frame)
@@ -155,85 +142,11 @@ class Navigation():
                                         bg=tools._from_rgb((219, 112, 147)),
                                         fg='white', font=tools.helv(12),
                                         width=10, height=2)
-#        self.lowry_depa = tk.Button(main.left_display_frame,
-#                                    textvariable=tools.lowry,
-#                                    font=tools.helv(12),
-#                                    bg=tools._from_rgb((250, 240, 230)),
-#                                    width=8, height=1,
-#                                    command=lambda: [
-#                                        self.depa(1),
-#                                        self.change_depa_color(tools, 1),
-#                                        tools.press_button_sound()])
-#        self.andrews_depa = tk.Button(main.left_display_frame,
-#                                      textvariable=tools.andrews,
-#                                      font=tools.helv(12),
-#                                      bg=tools._from_rgb((250, 240, 230)),
-#                                      width=8, height=1,
-#                                      command=lambda: [
-#                                          self.depa(2),
-#                                          self.change_depa_color(tools, 2),
-#                                          tools.press_button_sound()])
-#        self.kauke_depa = tk.Button(main.left_display_frame,
-#                                    textvariable=tools.kauke,
-#                                    font=tools.helv(12),
-#                                    bg=tools._from_rgb((250, 240, 230)),
-#                                    width=8, height=1,
-#                                    command=lambda: [
-#                                        self.depa(3),
-#                                        self.change_depa_color(tools, 3),
-#                                        tools.press_button_sound()])
-#        self.taylor_depa = tk.Button(main.left_display_frame,
-#                                     textvariable=tools.taylor,
-#                                     font=tools.helv(12),
-#                                     bg=tools._from_rgb((250, 240, 230)),
-#                                     width=8, height=1,
-#                                     command=lambda: [
-#                                         self.depa(4),
-#                                         self.change_depa_color(tools, 4),
-#                                         tools.press_button_sound()])
-
-        # destination
         self.destination_label = tk.Label(main.left_display_frame,
                                           textvariable=tools.destination,
                                           bg=tools._from_rgb((219, 112, 147)),
                                           fg='white', font=tools.helv(12),
                                           width=10, height=2)
-#        self.lowry_dest = tk.Button(main.left_display_frame,
-#                                    textvariable=tools.lowry,
-#                                    font=tools.helv(12),
-#                                    bg=tools._from_rgb((250, 240, 230)),
-#                                    width=8, height=1,
-#                                    command=lambda: [
-#                                        self.dest(1),
-#                                        self.change_dest_color(tools, 5),
-#                                        tools.press_button_sound()])
-#        self.andrews_dest = tk.Button(main.left_display_frame,
-#                                      textvariable=tools.andrews,
-#                                      font=tools.helv(12),
-#                                      bg=tools._from_rgb((250, 240, 230)),
-#                                      width=8, height=1,
-#                                      command=lambda: [
-#                                          self.dest(2),
-#                                          self.change_dest_color(tools, 6),
-#                                          tools.press_button_sound()])
-#        self.kauke_dest = tk.Button(main.left_display_frame,
-#                                    textvariable=tools.kauke,
-#                                    font=tools.helv(12),
-#                                    bg=tools._from_rgb((250, 240, 230)),
-#                                    width=8, height=1,
-#                                    command=lambda: [
-#                                        self.dest(3),
-#                                        self.change_dest_color(tools, 7),
-#                                        tools.press_button_sound()])
-#        self.taylor_dest = tk.Button(main.left_display_frame,
-#                                     textvariable=tools.taylor,
-#                                     font=tools.helv(12),
-#                                     bg=tools._from_rgb((250, 240, 230)),
-#                                     width=8, height=1,
-#                                     command=lambda: [
-#                                         self.dest(4),
-#                                         self.change_dest_color(tools, 8),
-#                                         tools.press_button_sound()])
         self.search = tk.Button(main.left_display_frame,
                                 textvariable=tools.search,
                                 font=tools.helv(12), fg='white',
@@ -248,23 +161,9 @@ class Navigation():
         main.guide_button.pack(side='top', padx=0, pady=0)
         self.departure_label.pack(side='top', padx=10, pady=30)
         self.op_depa.pack(side='top', padx=20, pady=10)
-#        self.lowry_depa.pack(side='top', padx=20, pady=10)
-#        self.andrews_depa.pack(side='top', padx=20, pady=10)
-#        self.kauke_depa.pack(side='top', padx=20, pady=10)
-#        self.taylor_depa.pack(side='top', padx=20, pady=10)
         self.destination_label.pack(side='top', padx=10, pady=30)
         self.op_dest.pack(side='top', padx=20, pady=10)
-#        self.lowry_dest.pack(side='top', padx=20, pady=10)
-#        self.andrews_dest.pack(side='top', padx=20, pady=10)
-#        self.kauke_dest.pack(side='top', padx=20, pady=10)
-#        self.taylor_dest.pack(side='top', padx=20, pady=10)
         self.search.pack(side='top', padx=20, pady=20)
-
-#    def depa(self, x):
-#        self.departure_num = x
-#
-#    def dest(self, x):
-#        self.destination_num = x
 
     def route(self):
         if self.clicked.get() == 'Lowry':
@@ -305,7 +204,7 @@ class Navigation():
                 self.ttroute.pack(side='top', padx=0, pady=35)
 
     def clear_route(self):
-        self.llroute.pack_forget()           # routes
+        self.llroute.pack_forget()
         self.laroute.pack_forget()
         self.lkroute.pack_forget()
         self.ltroute.pack_forget()
@@ -321,34 +220,6 @@ class Navigation():
         self.taroute.pack_forget()
         self.tkroute.pack_forget()
         self.ttroute.pack_forget()
-
-#    def change_depa_color(self, tools, x):
-#        self.lowry_depa['bg'] = tools._from_rgb((250, 240, 230))
-#        self.andrews_depa['bg'] = tools._from_rgb((250, 240, 230))
-#        self.kauke_depa['bg'] = tools._from_rgb((250, 240, 230))
-#        self.taylor_depa['bg'] = tools._from_rgb((250, 240, 230))
-#        if x == 1:
-#            self.lowry_depa['bg'] = tools._from_rgb((175, 238, 238))
-#        elif x == 2:
-#            self.andrews_depa['bg'] = tools._from_rgb((175, 238, 238))
-#        elif x == 3:
-#            self.kauke_depa['bg'] = tools._from_rgb((175, 238, 238))
-#        elif x == 4:
-#            self.taylor_depa['bg'] = tools._from_rgb((175, 238, 238))
-#
-#    def change_dest_color(self, tools, x):
-#        self.lowry_dest['bg'] = tools._from_rgb((250, 240, 230))
-#        self.andrews_dest['bg'] = tools._from_rgb((250, 240, 230))
-#        self.kauke_dest['bg'] = tools._from_rgb((250, 240, 230))
-#        self.taylor_dest['bg'] = tools._from_rgb((250, 240, 230))
-#        if x == 5:
-#            self.lowry_dest['bg'] = tools._from_rgb((175, 238, 238))
-#        elif x == 6:
-#            self.andrews_dest['bg'] = tools._from_rgb((175, 238, 238))
-#        elif x == 7:
-#            self.kauke_dest['bg'] = tools._from_rgb((175, 238, 238))
-#        elif x == 8:
-#            self.taylor_dest['bg'] = tools._from_rgb((175, 238, 238))
 
 
 class Information():

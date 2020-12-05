@@ -294,22 +294,22 @@ Kauke.''')
             self.dining_info_text.set('这是关于餐饮的信息。')
             self.aca_info_text.set('这是关于教学楼的信息。')
             self.lib_info_text.set('这是关于图书馆信息。')
-            self.llroute_text.set('需要翻译')    # route
+            self.llroute_text.set('出发点与目的地相同。')    # route
             self.laroute_text.set('需要翻译')
             self.lkroute_text.set('需要翻译')
             self.ltroute_text.set('需要翻译')
             self.alroute_text.set('需要翻译')
-            self.aaroute_text.set('需要翻译')
+            self.aaroute_text.set('出发点与目的地相同。')
             self.akroute_text.set('需要翻译')
             self.atroute_text.set('需要翻译')
             self.klroute_text.set('需要翻译')
             self.karoute_text.set('需要翻译')
-            self.kkroute_text.set('需要翻译')
+            self.kkroute_text.set('出发点与目的地相同。')
             self.ktroute_text.set('需要翻译')
             self.tlroute_text.set('需要翻译')
             self.taroute_text.set('需要翻译')
             self.tkroute_text.set('需要翻译')
-            self.ttroute_text.set('需要翻译')
+            self.ttroute_text.set('出发点与目的地相同。')
 
     def _from_rgb(self, rgb):
         '''translates an rgb tuple of int to a tkinter friendly color code

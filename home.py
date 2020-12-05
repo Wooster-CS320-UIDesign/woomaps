@@ -131,6 +131,8 @@ class Home_page():
                                           self.default_page(tools),
                                           self.button_label_forget(),
                                           self.main_page_buttons_forget(),
+                                          self.empty.pack(
+                                               side='top', padx=3, pady=35),
                                           Navigation(tools, self),
                                           self.change_status(4),
                                           tools.press_button_sound()])

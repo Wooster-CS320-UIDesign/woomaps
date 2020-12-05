@@ -17,6 +17,7 @@ class Setting():
                   bg=tools._from_rgb((255, 235, 205)),
                   command=lambda: [self.back_to_main(),
                                    self.menu_name.pack(side='top', pady=50),
+                                   self.language_name.pack(side='top'),
                                    self.language.pack(side='top', pady=0),
                                    self.about.pack(side='top', pady=20),
                                    self.sound_button(tools)]).place(x=0, y=0)
@@ -31,19 +32,17 @@ class Setting():
                                       textvariable=tools.language_text,
                                       bg=tools._from_rgb((255, 235, 205)),
                                       font=tools.helv(16))
-        self.options = ['English', '中文']
+        self.options = [' English   ', ' 中文']
         self.clicked = tk.StringVar(self.setting_page)
         self.clicked.set(self.options[tools.language_state])
-        self.language = tk.OptionMenu(self.setting_page, self.clicked, *self.options)
+        self.language = tk.OptionMenu(self.setting_page, self.clicked,
+                                      *self.options)
         self.language.config(bg=tools._from_rgb((250, 240, 230)),
-                                fg='black', font=tools.helv(24),
-                                width=8, height=1)
-#        menu = self.nametowidget(chooseTest.menuname)
-#        menu.config(font=helv35)
-        drop_down = self.language(self.options)
-        drop_down.config(bg=tools._from_rgb((250, 240, 230)),
-                                fg='black', font=tools.helv(24)
-                         )
+                             fg='black', font=tools.helv(24),
+                             width=8, height=1)
+        self.language['menu'].configure(bg=tools._from_rgb((250, 240, 230)),
+                                        fg='black', font=tools.helv(24))
+        self.clicked.trace('w', self.my_show)
         
         self.about = tk.Button(self.setting_page,
                                textvariable=tools.about_text,
@@ -125,7 +124,6 @@ class Setting():
     def back_to_main(self):
         self.sound_play_button.pack_forget()
         self.sound_no_play_button.pack_forget()
-        self.language_name.pack_forget()
         self.about_name.pack_forget()
         self.product_team.pack_forget()
         self.product_picture.pack_forget()
@@ -134,19 +132,20 @@ class Setting():
     def forget_main(self, tools):
         self.menu_name.pack_forget()
         self.language.pack_forget()
+        self.language_name.pack_forget()
         self.about.pack_forget()
         tools.press_button_sound()
         self.sound_play_button.pack_forget()
         self.sound_no_play_button.pack_forget()
 
     def my_show(self, *args):
-        if self.clicked.get() == 'English':
+        if self.clicked.get() == ' English   ':
             self.tools.language_state = 0
             self.tools.press_button_sound()
             self.tools.language_update(0)
             self.tools.language_state = 0
             self.clicked.set(self.options[0])
-        if self.clicked.get() == '中文':
+        if self.clicked.get() == ' 中文':
             self.tools.language_state = 1
             self.tools.press_button_sound()
             self.tools.language_update(1)

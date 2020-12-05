@@ -1,8 +1,9 @@
-# woomaps
-Welcome to the College of Wooster. Hope you had a great experience in the college. In case you are not familiar with our campus layout, we introduce you the WooMaps app. Using this application, you will be able to look around all our buildings. Also, it will help you identify which are the dining buildings, which are the libraries, and which are the academic buildings. To support foreign language speaker, we have other language options available. 
+# WooMaps
+WooMaps was created to help students and guests at the College of Wooster navigate what can sometimes be a confusing campus. WooMaps allows users to explore academic buildings, libraries, and dining halls on campus. There is a navigation option to help find your way from place to place on campus. Other features include additional information on buildings, photos to help guide the way, and language options.
 
-To download our application:
-1.	Go to our website https://github.com/Wooster-CS320-UIDesign/woomaps.
-2.	Download the code to your computer.
-3.	Open the main.py file.
-4.	Run the code.
+You can find more details about WooMaps at [our website](https://wooster-cs320-uidesign.github.io/woomaps/#/).
+
+### Installation
+To install and run WooMaps:
+1.	Clone this repository or download and extract the code 
+2.  Using Python 3, run main.py

@@ -15,6 +15,7 @@ class Navigation():
                                   tools.press_button_sound(),
                                   self.departure_label.pack_forget(),
                                   self.destination_label.pack_forget(),
+                                  self.op_depa.pack_forget(),
                                   self.op_dest.pack_forget(),
                                   self.llroute.pack_forget(),
                                   self.laroute.pack_forget(),
@@ -42,7 +43,7 @@ class Navigation():
             fg='white', font=tools.helv(24),
             width=14, height=2)
 
-        self.llroute = tk.Label(main.right_frame, text='Same departure and destination',
+        self.llroute = tk.Label(main.right_frame, textvariable=tools.llroute_text,
                                 bg=tools._from_rgb((255, 235, 205)),
                                 fg='red', font=tools.helv(12),
                                 width=30, height=10)
@@ -110,7 +111,7 @@ class Navigation():
                                 justify='left', wraplength=300,
                                 bg=tools._from_rgb((255, 235, 205)),
                                 fg='black', font=tools.helv(12),
-                                width=30, height=10)
+                                width=30, height=12)
         self.tkroute = tk.Label(main.right_frame, textvariable=tools.tkroute_text,
                                 justify='left', wraplength=300,
                                 bg=tools._from_rgb((255, 235, 205)),
@@ -159,11 +160,11 @@ class Navigation():
         self.guide_label.pack(side='top', fill='x')
         self.back.pack(side='top', padx=20, pady=30)
         main.guide_button.pack(side='top', padx=0, pady=0)
-        self.departure_label.pack(side='top', padx=10, pady=30)
-        self.op_depa.pack(side='top', padx=20, pady=10)
-        self.destination_label.pack(side='top', padx=10, pady=30)
-        self.op_dest.pack(side='top', padx=20, pady=10)
-        self.search.pack(side='top', padx=20, pady=20)
+        self.departure_label.pack(side='top', padx=10, pady=20)
+        self.op_depa.pack(side='top', padx=20, pady=20)
+        self.destination_label.pack(side='top', padx=10, pady=20)
+        self.op_dest.pack(side='top', padx=20, pady=20)
+        self.search.pack(side='top', padx=20, pady=10)
 
     def route(self):
         if self.clicked.get() == 'Lowry':
@@ -185,7 +186,7 @@ class Navigation():
             elif self.clicked1.get() == 'Taylor':
                 self.atroute.pack(side='top', padx=0, pady=35)
         elif self.clicked.get() == 'Kauke':
-            if self.clicked.get() == 'Lowry':
+            if self.clicked1.get() == 'Lowry':
                 self.klroute.pack(side='top', padx=0, pady=35)
             elif self.clicked1.get() == 'Andrews':
                 self.karoute.pack(side='top', padx=0, pady=35)
@@ -194,7 +195,7 @@ class Navigation():
             elif self.clicked1.get() == 'Taylor':
                 self.ktroute.pack(side='top', padx=0, pady=35)
         elif self.clicked.get() == 'Taylor':
-            if self.clicked.get() == 'Lowry':
+            if self.clicked1.get() == 'Lowry':
                 self.tlroute.pack(side='top', padx=0, pady=35)
             elif self.clicked1.get() == 'Andrews':
                 self.taroute.pack(side='top', padx=0, pady=35)
